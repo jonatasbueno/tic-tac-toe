@@ -4,8 +4,7 @@ import { Square } from '../square/Square';
 
 export const Board = ({ squares = [], onClick = () => {}, winningLine = [] }) => {
   return (
-    <div className="grid grid-cols-3 gap-2 p-4 bg-gray-100 rounded-lg shadow-md
-      @container @sm:p-6 @md:p-8">
+    <div className="grid grid-cols-3 gap-2 p-4 bg-gray-100 rounded-lg shadow-md">
       {squares.map((value, index) => (
         <Square
           key={index}
