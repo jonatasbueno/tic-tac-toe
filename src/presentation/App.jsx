@@ -1,11 +1,13 @@
-import './styles/index.css';
+import { AppProvider } from '../infrastructure/providers/AppProvider'
+import { Game } from './pages/Game'
+
+import './styles/index.css'
 
 function App() {
-
   return (
-    <>
-      teste
-    </>
+    <AppProvider>
+      <Game />
+    </AppProvider>
   )
 }
 
