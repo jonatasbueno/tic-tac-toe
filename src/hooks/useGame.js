@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useAppStore } from '../store/useAppStore';
 import { checkGameState } from '../utils/functions';
 
@@ -11,6 +12,7 @@ export const useGame = () => {
       const interval = setInterval(() => {
         actions.tick();
       }, 1000);
+
       return () => clearInterval(interval);
     }
   }, [isPlayerTurn, winner, gameStarted, actions]);
@@ -33,9 +35,8 @@ export const useGame = () => {
 
   useEffect(() => {
     const result = checkGameState(squares);
-    if (result) {
-      actions.setEndOfGame(result);
-    }
+
+    if (result) actions.setEndOfGame(result);
   }, [squares, actions]);
 
   return {

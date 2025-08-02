@@ -1,5 +1,5 @@
-import { Board } from '../components/container/board/Board';
-import { useGame } from '../hooks/useGame';
+import { Board } from "../components/container/board/Board";
+import { useGame } from "../hooks/useGame";
 
 export const Game = () => {
   const {
@@ -17,16 +17,10 @@ export const Game = () => {
       playerName,
       isPlayerTurn,
     },
-    actions: {
-      resetGame,
-      startGame,
-      handleClick,
-      changePlayerColor,
-    },
+    actions: { resetGame, startGame, handleClick, changePlayerColor },
   } = useGame();
-
-  const turn = `Próximo: ${isPlayerTurn ? playerName : 'Bot'}`;
-  const timerText = timer > 0 ? `${timer}s` : '1s';
+  const turn = `Próximo: ${isPlayerTurn ? playerName : "Bot"}`;
+  const timerText = timer > 0 ? `${timer} segundos` : "1 segundo";
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-4">
@@ -38,8 +32,10 @@ export const Game = () => {
       </div>
       <div className="mb-4 text-lg md:text-xl font-medium text-gray-400">
         <div className="text-xl text-center">Placar</div>
-        <ul className='flex gap-4'>
-          <li className="text-blue-400">{playerName}: {playerWins}</li>
+        <ul className="flex gap-4">
+          <li className="text-blue-400">
+            {playerName}: {playerWins}
+          </li>
           <li className="text-red-400">Bot: {botWins}</li>
         </ul>
       </div>

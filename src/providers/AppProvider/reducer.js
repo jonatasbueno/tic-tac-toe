@@ -5,7 +5,6 @@ export const actionTypes = {
   PLAYER_MOVE: 'PLAYER_MOVE',
   BOT_MOVE: 'BOT_MOVE',
   SET_END_OF_GAME: 'SET_END_OF_GAME',
-  
   RESET_GAME: 'RESET_GAME',
   CHANGE_PLAYER_NAME: 'CHANGE_PLAYER_NAME',
   CHANGE_PLAYER_COLOR: 'CHANGE_PLAYER_COLOR',
@@ -101,8 +100,6 @@ export function reducer(state, action) {
       }
       return state;
     }
-
-    
 
     case actionTypes.RESET_GAME:
       return {

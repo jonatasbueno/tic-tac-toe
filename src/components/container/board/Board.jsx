@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import { Square } from '../square/Square';
 
 export const Board = ({
