@@ -1,4 +1,4 @@
-import { AppProvider } from '../infrastructure/providers/AppProvider'
+import { AppProvider } from './providers/AppProvider'
 import { Game } from './pages/Game'
 
 import './styles/index.css'
