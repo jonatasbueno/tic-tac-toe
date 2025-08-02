@@ -16,7 +16,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-white">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-800 text-white">
       <h1 className="text-5xl font-bold mb-8">Jogo da Velha</h1>
       <div className="flex flex-col items-center">
         <input
@@ -24,6 +24,7 @@ export const Home = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Digite seu nome"
+          aria-label="Digite seu nome de jogador"
           className="px-4 py-2 mb-4 text-lg text-gray-800 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
@@ -34,6 +35,6 @@ export const Home = () => {
           Iniciar Jogo
         </button>
       </div>
-    </div>
+    </main>
   );
 };

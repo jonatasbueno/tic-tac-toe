@@ -10,7 +10,11 @@ export const Board = ({
   botColor,
 }) => {
   return (
-    <div className="grid grid-cols-3 gap-2 p-4 bg-gray-800 rounded-lg shadow-lg">
+    <div
+      className="grid grid-cols-3 gap-2 p-4 bg-gray-800 rounded-lg shadow-lg"
+      role="grid"
+      aria-label="Tabuleiro do Jogo da Velha"
+    >
       {squares.map((value, index) => (
         <Square
           key={index}
@@ -19,6 +23,7 @@ export const Board = ({
           isWinning={winningLine.includes(index)}
           playerColor={playerColor}
           botColor={botColor}
+          aria-label={`Casa ${index + 1}: ${value === null ? 'vazia' : value}`}
         />
       ))}
     </div>
