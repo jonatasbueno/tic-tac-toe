@@ -1,12 +1,13 @@
+import { RouterProvider } from "react-router-dom";
 import { AppProvider } from './providers/AppProvider'
-import { Game } from './pages/Game'
+import { router } from "./router";
 
 import './styles/index.css'
 
 function App() {
   return (
     <AppProvider>
-      <Game />
+      <RouterProvider router={router} />
     </AppProvider>
   )
 }

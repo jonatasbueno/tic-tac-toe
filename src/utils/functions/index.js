@@ -1,8 +1,8 @@
 function minimax(board, depth, isMaximizing) {
   const result = checkGameState(board);
   if (result !== null) {
-    if (result === "O") return { score: 10 - depth };
-    if (result === "X") return { score: depth - 10 };
+    if (result.winner === "O") return { score: 10 - depth };
+    if (result.winner === "X") return { score: depth - 10 };
     return { score: 0 };
   }
 
@@ -39,11 +39,8 @@ function minimax(board, depth, isMaximizing) {
   }
 }
 
-export function botMove(board, icon) {
+export function getBotMove(board) {
   const { move } = minimax(board, 0, true);
-  if (move !== null) {
-    board[move] = icon;
-  }
   return move;
 }
 
@@ -62,12 +59,12 @@ export const checkGameState = (board) => {
   for (let condition of winConditions) {
     const [a, b, c] = condition;
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      return board[a];
+      return { winner: board[a], winningLine: [a, b, c] };
     }
   }
 
   if (board.every((cell) => cell !== null)) {
-    return "tie";
+    return { winner: "tie", winningLine: [] };
   }
 
   return null;

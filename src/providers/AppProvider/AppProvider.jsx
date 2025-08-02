@@ -1,51 +1,24 @@
-import { useState, useMemo, useCallback } from "react";
-import PropTypes from "prop-types";
+import { useReducer, useMemo } from 'react';
+import PropTypes from 'prop-types';
 
-import { AppContext } from './AppContext'
-
-const initialState = {
-  squares: Array(9).fill(null),
-  winner: null,
-  winningLine: [],
-  timer: 5,
-  message: '',
-  playerColor: 'blue-500',
-  botColor: 'black',
-  playerWins: 0,
-  botWins: 0,
-  gameStarted: false,
-}
+import { AppContext } from './AppContext';
+import { reducer, initialState, actionTypes } from './reducer';
 
 export function AppProvider({ children }) {
-  const [state, setState] = useState(initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const updateState = useCallback((key, value) => setState((prevState) => ({
-      ...prevState,
-      [key]: value,
-    })), [setState]);
+  const actions = useMemo(() => ({
+    startGame: () => dispatch({ type: actionTypes.START_GAME }),
+    resetGame: () => dispatch({ type: actionTypes.RESET_GAME }),
+    playerMove: (index) => dispatch({ type: actionTypes.PLAYER_MOVE, payload: index }),
+    botMove: () => dispatch({ type: actionTypes.BOT_MOVE }),
+    setEndOfGame: (result) => dispatch({ type: actionTypes.SET_END_OF_GAME, payload: result }),
+    tick: () => dispatch({ type: actionTypes.TICK }),
+    changePlayerName: (name) => dispatch({ type: actionTypes.CHANGE_PLAYER_NAME, payload: name }),
+    changePlayerColor: (color) => dispatch({ type: actionTypes.CHANGE_PLAYER_COLOR, payload: color }),
+  }), []);
 
-  const setSquares = useCallback((squares) => updateState('squares', squares), [updateState]);
-  const setWinner = useCallback((winner) => updateState('winner', winner), [updateState]);
-  const setWinningLine = useCallback((winningLine) => updateState('winningLine', winningLine), [updateState]);
-  const setTimer = useCallback((timer) => updateState('timer', timer), [updateState]);
-  const setMessage = useCallback((message) => updateState('message', message), [updateState]);
-  const setPlayerColor = useCallback((playerColor) => updateState('playerColor', playerColor), [updateState]);
-  const setPlayerWins = useCallback((playerWins) => updateState('playerWins', playerWins), [updateState]);
-  const setBotWins = useCallback((botWins) => updateState('botWins', botWins), [updateState]);
-  const setGameStarted = useCallback((gameStarted) => updateState('gameStarted', gameStarted), [updateState]);
-
-  const value = useMemo(() => ({
-    state,
-    setSquares,
-    setWinner,
-    setWinningLine,
-    setTimer,
-    setMessage,
-    setPlayerColor,
-    setPlayerWins,
-    setBotWins,
-    setGameStarted,
-  }), [state, setSquares, setWinner, setWinningLine, setTimer, setMessage, setPlayerColor, setPlayerWins, setBotWins, setGameStarted]);
+  const value = useMemo(() => ({ state, actions }), [state, actions]);
 
   return (
     <AppContext.Provider value={value}>
