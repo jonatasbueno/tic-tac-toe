@@ -32,7 +32,9 @@ export const Game = () => {
             : "")}
       </div>
       <div className="mb-4 text-lg font-medium text-gray-600 @sm:text-xl">
-        Placar: Jogador: {playerWins} | Bot: {botWins}
+        <span>
+          Placar: Jogador: {playerWins} | Bot: {botWins}
+        </span>
       </div>
       <div className="mb-4 text-lg font-medium text-gray-600 @sm:text-xl">
         {gameStarted && `Tempo restante: ${timer}s`}
@@ -72,7 +74,7 @@ export const Game = () => {
           botColor={botColor}
         />
       )}
-      
+
       {gameStarted && (
         <button
           className="mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-lg
