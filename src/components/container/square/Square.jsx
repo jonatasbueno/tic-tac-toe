@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const Square = ({ value, onClick, isWinning, playerColor, botColor }) => {
-  const colorClass = value === 'X' ? `text-${playerColor}` : `text-${botColor}`;
+  const colorClass = value === 'X' ? playerColor : botColor;
   const winningClass = isWinning ? 'bg-green-500 scale-110' : 'bg-gray-700';
 
   return (

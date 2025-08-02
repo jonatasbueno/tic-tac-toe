@@ -21,7 +21,7 @@ export const initialState = {
   playerWins: 0,
   botWins: 0,
   playerName: 'Jogador',
-  playerColor: 'blue-500',
+  playerColor: 'text-blue-500',
   botColor: 'red-500',
 };
 
