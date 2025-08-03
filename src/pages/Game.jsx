@@ -37,7 +37,10 @@ export const Game = () => {
       <h1 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-6 animate-pulse">
         Jogo da Velha
       </h1>
-      <div className="mb-4 text-xl md:text-2xl font-medium text-gray-300" aria-live="polite">
+      <div
+        className="mb-4 text-xl md:text-2xl font-medium text-gray-300"
+        aria-live="polite"
+      >
         {message || (gameStarted && !winner && turn)}
       </div>
       <div className="mb-4 text-lg md:text-xl font-medium text-gray-400">
@@ -49,7 +52,10 @@ export const Game = () => {
           <li className="text-red-400">Bot: {botWins}</li>
         </ul>
       </div>
-      <div className="mb-4 text-lg md:text-xl font-medium text-yellow-400" role="status">
+      <div
+        className="mb-4 text-lg md:text-xl font-medium text-yellow-400"
+        role="status"
+      >
         {gameStarted && `Tempo: ${timerText}`}
       </div>
 
@@ -62,7 +68,10 @@ export const Game = () => {
           <span>Mudar Cor do Jogador</span>
         </button>
         {showColorOptions && (
-          <div className="absolute bottom-full right-0 mb-2 w-32 bg-gray-800 rounded-lg shadow-lg p-2" role="menu">
+          <div
+            className="absolute bottom-full right-0 mb-2 w-32 bg-gray-800 rounded-lg shadow-lg p-2"
+            role="menu"
+          >
             {colors.map((color) => (
               <button
                 key={color.value}
@@ -93,24 +102,22 @@ export const Game = () => {
         </button>
       )}
 
+      <Board
+        squares={squares}
+        onClick={gameStarted ? handleClick : () => null}
+        winningLine={winningLine}
+        playerColor={playerColor}
+        botColor={botColor}
+      />
+
       {gameStarted && (
-        <>
-          <Board
-            squares={squares}
-            onClick={handleClick}
-            winningLine={winningLine}
-            playerColor={playerColor}
-            botColor={botColor}
-          />
-          
-          <button
-            className="mt-6 px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105"
-            onClick={resetGame}
-            aria-label="Reiniciar Jogo"
-          >
-            Reiniciar Jogo
-          </button>
-        </>
+        <button
+          className="mt-6 px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-transform transform hover:scale-105"
+          onClick={resetGame}
+          aria-label="Reiniciar Jogo"
+        >
+          Reiniciar Jogo
+        </button>
       )}
     </main>
   );

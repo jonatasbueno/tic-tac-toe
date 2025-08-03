@@ -1,10 +1,19 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-export const Square = ({ value, onClick, isWinning, playerColor, botColor }) => {
-  const colorClass = value === 'X' ? playerColor : botColor;
-  const winningClass = isWinning ? 'bg-green-500 scale-110' : 'bg-gray-700';
+export const Square = ({
+  value,
+  onClick,
+  isWinning,
+  playerColor,
+  botColor,
+}) => {
+  const colorClass = value === "X" ? playerColor : botColor;
 
-  const ariaLabel = value === null ? 'Casa vazia' : `Casa com ${value}`;
+  const winningClass = isWinning
+    ? `${colorClass.replace("text-", "bg-")} scale-110`
+    : "bg-gray-700";
+
+  const ariaLabel = value === null ? "Casa vazia" : `Casa com ${value}`;
 
   return (
     <button
@@ -19,7 +28,7 @@ export const Square = ({ value, onClick, isWinning, playerColor, botColor }) => 
 };
 
 Square.propTypes = {
-  value: PropTypes.oneOf(['X', 'O', null]),
+  value: PropTypes.oneOf(["X", "O", null]),
   onClick: PropTypes.func.isRequired,
   isWinning: PropTypes.bool.isRequired,
   playerColor: PropTypes.string.isRequired,

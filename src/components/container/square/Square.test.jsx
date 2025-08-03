@@ -8,7 +8,7 @@ describe('Square', () => {
     value: null,
     onClick: vi.fn(),
     isWinning: false,
-    playerColor: 'blue-500',
+    playerColor: 'text-blue-500',
     botColor: 'red-500',
   };
 
@@ -31,10 +31,9 @@ describe('Square', () => {
   });
 
   it('should apply winning styles if isWinning is true', () => {
-    render(<Square {...defaultProps} isWinning={true} />);
+    render(<Square {...defaultProps} isWinning={true} value="X" />);
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bg-green-500');
-    expect(button).toHaveClass('scale-110');
+    expect(button).toHaveClass('bg-blue-500', 'scale-110');
   });
 
   it('should apply player color for X', () => {

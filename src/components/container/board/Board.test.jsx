@@ -8,8 +8,8 @@ describe('Board', () => {
     squares: Array(9).fill(null),
     onClick: vi.fn(),
     winningLine: [],
-    playerColor: 'blue-500',
-    botColor: 'red-500',
+    playerColor: 'text-blue-500',
+    botColor: 'text-red-500',
   };
 
   it('should render 9 squares', () => {
@@ -26,10 +26,11 @@ describe('Board', () => {
   });
 
   it('should apply winning styles to winning squares', () => {
-    const winningProps = { ...defaultProps, winningLine: [0, 1, 2] };
+    const winningProps = { ...defaultProps, squares: ['X', 'X', 'X', null, null, null, null, null, null], winningLine: [0, 1, 2] };
     render(<Board {...winningProps} />);
-    const winningSquare = screen.getAllByLabelText('Casa vazia')[0];
-    expect(winningSquare).toHaveClass('bg-green-500');
+    const winningSquare = screen.getAllByLabelText('Casa com X')[0];
+    expect(winningSquare).toHaveClass('bg-blue-500');
+    expect(winningSquare).toHaveClass('scale-110');
   });
 
   it('should display player Xs move', () => {
@@ -37,7 +38,7 @@ describe('Board', () => {
     render(<Board {...boardWithX} />);
     const square = screen.getByLabelText('Casa com X');
     expect(square).toHaveTextContent('X');
-    expect(square.querySelector('span')).toHaveClass('blue-500');
+    expect(square.querySelector('span')).toHaveClass('text-blue-500');
   });
 
   it('should display bot Os move', () => {
@@ -45,6 +46,6 @@ describe('Board', () => {
     render(<Board {...boardWithO} />);
     const square = screen.getByLabelText('Casa com O');
     expect(square).toHaveTextContent('O');
-    expect(square.querySelector('span')).toHaveClass('red-500');
+    expect(square.querySelector('span')).toHaveClass('text-red-500');
   });
 });
