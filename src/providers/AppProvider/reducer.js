@@ -8,6 +8,7 @@ export const actionTypes = {
   RESET_GAME: 'RESET_GAME',
   CHANGE_PLAYER_NAME: 'CHANGE_PLAYER_NAME',
   CHANGE_PLAYER_COLOR: 'CHANGE_PLAYER_COLOR',
+  TICK: 'TICK',
 };
 
 export const initialState = {
@@ -25,7 +26,7 @@ export const initialState = {
   botColor: 'red-500',
 };
 
-export function reducer(state, action) {
+export function reducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.START_GAME:
       return {
